@@ -32,8 +32,8 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-slate-900">
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 rounded-full blur-[120px]" />
       <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-indigo-500/20 rounded-full blur-[120px]" />
-      
-      <motion.div 
+
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="glass max-w-md w-full p-8 relative z-10"
@@ -51,35 +51,35 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-slate-300 mb-1">Email</label>
-            <input 
-              type="email" 
+            <input
+              type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="glass-input w-full p-3 bg-slate-800/50" 
+              className="glass-input w-full p-3 bg-slate-800/50"
               placeholder="Nhập email của bạn"
-              required 
+              required
             />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-300 mb-1">Mật khẩu</label>
-            <input 
-              type="password" 
+            <input
+              type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="glass-input w-full p-3 bg-slate-800/50" 
+              className="glass-input w-full p-3 bg-slate-800/50"
               placeholder="••••••••"
-              required 
+              required
             />
           </div>
-          
+
           <div className="flex justify-end">
             <Link to="/forgot-password" className="text-sm text-primary hover:text-blue-400 flex items-center gap-1 transition-colors">
               <KeyRound className="w-3 h-3" /> Quên mật khẩu?
             </Link>
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={isLoading}
             className="w-full btn-primary py-3 flex items-center justify-center gap-2 mt-2"
           >
