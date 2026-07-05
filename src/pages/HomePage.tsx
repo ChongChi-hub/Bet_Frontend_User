@@ -51,11 +51,9 @@ export default function HomePage() {
       <nav className="glass sticky top-0 z-50 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-2 bg-primary/20 rounded-lg border border-primary/30">
-              <Activity className="w-5 h-5 text-primary" />
-            </div>
+            <img src="/LongHoangF8BET.png" alt="Logo" className="w-10 h-10 object-contain rounded-lg" />
             <span className="font-bold text-lg hidden sm:block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
-              Minigame Cược Bóng
+              LongHoangF8BET
             </span>
           </div>
           
