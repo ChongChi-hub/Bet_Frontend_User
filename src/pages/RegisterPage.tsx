@@ -7,9 +7,8 @@ import { UserPlus, ArrowLeft } from 'lucide-react';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
+    username: '',
     fullName: '',
-    email: '',
-    phoneNumber: '',
     password: '',
     confirmPassword: ''
   });
@@ -26,9 +25,8 @@ export default function RegisterPage() {
     setIsLoading(true);
     try {
       await api.post('/auth/register', {
+        username: formData.username,
         fullName: formData.fullName,
-        email: formData.email,
-        phoneNumber: formData.phoneNumber,
         password: formData.password
       });
       toast.success('Đăng ký thành công! Vui lòng đăng nhập.');
@@ -66,7 +64,18 @@ export default function RegisterPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Họ tên <span className="text-red-400">*</span></label>
+            <label className="block text-sm font-medium text-slate-300 mb-1">Username <span className="text-red-400">*</span></label>
+            <input 
+              type="text" 
+              value={formData.username}
+              onChange={e => setFormData({...formData, username: e.target.value})}
+              className="glass-input w-full p-3 bg-slate-800/50" 
+              placeholder="VD: nguyenvana"
+              required 
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-1">Tên của bạn <span className="text-red-400">*</span></label>
             <input 
               type="text" 
               value={formData.fullName}
@@ -75,29 +84,6 @@ export default function RegisterPage() {
               placeholder="VD: Nguyễn Văn A"
               required 
             />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Email <span className="text-red-400">*</span></label>
-              <input 
-                type="email" 
-                value={formData.email}
-                onChange={e => setFormData({...formData, email: e.target.value})}
-                className="glass-input w-full p-3 bg-slate-800/50" 
-                placeholder="VD: nguyenvana@gmail.com"
-                required 
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Số điện thoại</label>
-              <input 
-                type="text" 
-                value={formData.phoneNumber}
-                onChange={e => setFormData({...formData, phoneNumber: e.target.value})}
-                className="glass-input w-full p-3 bg-slate-800/50" 
-                placeholder="VD: 0987654321"
-              />
-            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -48,6 +48,7 @@ export default function MatchCard({ match, index, userPrediction }: MatchCardPro
 
   const getStatusBadge = () => {
     switch (match.status) {
+      case 'PENDING': return <span className="badge badge-pending">Chưa mở</span>;
       case 'OPEN': return <span className="badge badge-open">Mở dự đoán</span>;
       case 'LOCKED': return <span className="badge badge-locked">Đã khóa</span>;
       case 'SETTLED': return <span className="badge badge-settled">Đã chốt</span>;
@@ -113,6 +114,17 @@ export default function MatchCard({ match, index, userPrediction }: MatchCardPro
               {match.finalNote}
             </div>
           )}
+        </div>
+      )}
+
+      {match.status === 'PENDING' && (
+        <div className="text-center p-6 bg-slate-800/30 rounded-lg border border-slate-700/50">
+          <Clock className="w-8 h-8 text-slate-400 mx-auto mb-2 opacity-50" />
+          <h4 className="font-bold text-slate-300 mb-1">Chưa đến giờ dự đoán</h4>
+          <p className="text-sm text-slate-400">
+            Trận đấu sẽ mở dự đoán vào lúc:<br/>
+            <strong className="text-primary">{match.openTime ? new Date(match.openTime).toLocaleString('vi-VN') : 'Sắp tới'}</strong>
+          </p>
         </div>
       )}
 

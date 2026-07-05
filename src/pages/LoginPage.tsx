@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { LogIn, UserPlus, KeyRound } from 'lucide-react';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -17,12 +17,12 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await api.post('/auth/login', { email, password });
+      const res = await api.post('/auth/login', { username, password });
       login(res.data.token, res.data.role, res.data.fullName);
       toast.success('Đăng nhập thành công!');
       navigate('/');
     } catch (error: any) {
-      toast.error(error.response?.data?.message || 'Email hoặc mật khẩu không chính xác');
+      toast.error(error.response?.data?.message || 'Tên hoặc mật khẩu không chính xác');
     } finally {
       setIsLoading(false);
     }
@@ -43,20 +43,20 @@ export default function LoginPage() {
             <LogIn className="w-8 h-8 text-primary" />
           </div>
           <h1 className="text-3xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
-            Minigame Cược Bóng
+            LongHoangF8BET
           </h1>
           <p className="text-slate-400">Đăng nhập để tham gia dự đoán</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Email</label>
+            <label className="block text-sm font-medium text-slate-300 mb-1">Username</label>
             <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              type="text"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
               className="glass-input w-full p-3 bg-slate-800/50"
-              placeholder="Nhập email của bạn"
+              placeholder="Nhập username của bạn"
               required
             />
           </div>

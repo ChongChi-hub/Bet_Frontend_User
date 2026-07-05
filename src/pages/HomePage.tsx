@@ -1,3 +1,4 @@
+
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/axios';
 import type { Match, User } from '../types';
@@ -6,6 +7,7 @@ import { Activity, LogOut, Wallet } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { formatVND } from '../lib/format';
+import LeagueBracket from '../components/LeagueBracket';
 
 export default function HomePage() {
   const { fullName, logout } = useAuth();
@@ -90,6 +92,8 @@ export default function HomePage() {
             <p className="text-slate-400">Phân tích kỹ lưỡng và đưa ra dự đoán của bạn.</p>
           </div>
         </motion.div>
+
+        {matches && matches.length > 0 && <LeagueBracket matches={matches} />}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {matches?.map((match, index) => {
